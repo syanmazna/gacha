@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Magic 8 Ball Web Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        #question {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 50px;
+            text-align: left;
+        }
+        .answer {
+            font-weight: bold;
+            color: #2196F3;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Magic 8 Ball</h1>
+    <p>Ask your question and get the answer!</p>
+    
+    <input type="text" id="questionInput" placeholder="Type your question here...">
+    <button onclick="getAnswer()">Ask the Magic 8 Ball</button>
+    
+    <div id="result">
+        <p>Your answer will appear here...</p>
+    </div>
+
+    <script>
+        function getAnswer() {
+            // Get the question from input
+            const question = document.getElementById('questionInput').value;
+            
+            // Generate random answer
+            const num = Math.floor(Math.random() * 9) + 1;
+            let answer;
+            
+            switch(num) {
+                case 1: answer = 'Yes - definitely.'; break;
+                case 2: answer = 'It is decidedly so.'; break;
+                case 3: answer = 'Without a doubt.'; break;
+                case 4: answer = 'Reply hazy, try again.'; break;
+                case 5: answer = 'Ask again later.'; break;
+                case 6: answer = 'Better not tell you now.'; break;
+                case 7: answer = 'My sources say no.'; break;
+                case 8: answer = 'Outlook not so good.'; break;
+                case 9: answer = 'Very doubtful'; break;
+            }
+            
+            // Display result in the webpage
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p><strong>Question:</strong> ${question || "No question asked"}</p>
+                <p class="answer"><strong>Answer:</strong> ${answer} (${num})</p>
+            `;
+        }
+    </script>
+</body>
+</html>
